@@ -26,6 +26,8 @@ values	('Adithya','Manipulator'),
 insert into person(first_name,last_name)
 values('Tillu','Puppy');
 
+delete from person
+where id=5;
 -- to query Adithya 
 select * from person where id=3;
 
@@ -37,6 +39,14 @@ update person
 set last_name = 'M'
 where id=3;
 
+-- level (id,name)
+create table level(
+    id int primary key auto_increment,
+    name varchar(100) not null
+);
+ 
+desc level;
+select * from level;
 
-
-
+insert into level(name)
+values('Level'),('sab'),('ke'),('niklenge');
