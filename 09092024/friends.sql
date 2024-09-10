@@ -50,3 +50,13 @@ select * from level;
 
 insert into level(name)
 values('Level'),('sab'),('ke'),('niklenge');
+
+use FriendsManagementDb;
+-- drop the table 
+-- delete person
+select * from person;
+truncate table person;
+drop table if exists person;
+desc person;
+
+
