@@ -1,0 +1,19 @@
+body {
+    font-family: 'Verdana';
+}
+#menus {
+    background-color: aqua;
+    padding: 10px;
+    text-align: center;
+}
+#menus a {
+    color: aliceblue;
+    text-decoration: wavy;
+    display: inline-block;
+    background-color: grey;
+    padding: 3px;
+    width: max-content;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+}
