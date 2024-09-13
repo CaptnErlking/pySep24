@@ -12,12 +12,12 @@
 
     <style>
         body {
-            background-image: url('patient.jpg'); /* Replace with your image path */
+            background-image: url('/static/patient.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-blend-mode: overlay;
-            background-color: rgba(0, 0, 0, 0.5); /* Darken the background for visibility */
+            background-color: rgba(28, 28, 28, 0.4); /* Darken the background for visibility */
         }
 
         /* Font and other styles */
@@ -36,9 +36,30 @@
             color: #ffc107 !important; /* Hover effect changes to a yellow color */
         }
 
+        .table {
+            border-radius: 10px; /* Curved ends of the table */
+            overflow: hidden; /* Ensure rounded corners are applied */
+        }
+
         .table th {
             background-color: #0d6efd;
             color: white;
+        }
+
+        .table th:first-child {
+            border-top-left-radius: 10px; /* Curved top-left corner */
+        }
+
+        .table th:last-child {
+            border-top-right-radius: 10px; /* Curved top-right corner */
+        }
+
+        .table tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 10px; /* Curved bottom-left corner */
+        }
+
+        .table tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 10px; /* Curved bottom-right corner */
         }
 
         .btn-custom {
@@ -50,14 +71,14 @@
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
         }
 
         .hero {
-            background-color: rgba(248, 249, 250, 0.9); /* Slightly transparent white */
+            background-color: rgba(248, 249, 250, 0.7); /* Slightly transparent white */
             padding: 50px 0;
             text-align: center;
         }
@@ -68,10 +89,11 @@
             background: linear-gradient(45deg, #0d6efd, #6610f2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.2; /* Adjusted line-height */
+            padding-bottom: 0.5rem; /* Add padding to prevent cut-off */
         }
     </style>
 </head>
-
 
 <body>
 
@@ -122,8 +144,8 @@
                     <td>{{ patient.disease }}</td>
                     <td>{{ patient.age }}</td>
                     <td>
-                        <a href="/patients/edit/{{patient.id}}" class="btn btn-warning btn-sm btn-custom">Edit</a>
-                        <button class="btn btn-danger btn-sm" onclick="openDeleteModal('{{ patient.id }}')">Delete</button>
+                        <a href="/patients/edit/{{patient.id}}" class="btn btn-outline-primary btn-sm btn-custom">Edit</a>
+                        <button class="btn btn-outline-danger btn-sm" onclick="openDeleteModal('{{ patient.id }}')">Delete</button>
                     </td>
                 </tr>
                 {% endfor %}
