@@ -1,16 +1,14 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from .models import Doctor
 # Create your views here.
-from .models import Doctor 
-
 def list_of_doctors(request):
-    return render(request,'list.html')
-    #doctors = Doctor.objects.all()
+    doctors = Doctor.objects.all() ######
+    return render(request, 'list.html', {'doctors' : doctors}) ######
     #code 
     #connect to the template "list.html" takes "doctors" as param
 
 def create_doctor(request):
-    return render(request,'form.html')
+    return render(request,"form.html")
     #GET method
         #connect to the template "form.html" 
     #POST method 
@@ -22,7 +20,8 @@ def create_doctor(request):
         #redirect list page 
 
 def edit_doctor(request, id):
-    return render(request,'form.html')
+    
+    return render(request,"form.html")
     #GET method
         # doctor = Doctor.objects.get(id = id)
         #connect to the template "form.html" pass doctor as param  
@@ -32,10 +31,10 @@ def edit_doctor(request, id):
         # doctor.specialization
         # doctor.year_of_experience
         # doctor.save()
-        # #redirect list page 
+        #redirect list page 
         
 def delete_doctor(request, id):
-    return redirect('list_of_doctors')
+    return redirect("list_of_doctors")
     # doctor = Doctor.objects.get(id = id)
     # doctor.delete()
-    #redirect list page 
+    #redirect list page

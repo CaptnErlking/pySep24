@@ -20,7 +20,7 @@ from DoctorApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('doctors/', view=views.list_of_doctors, name='list_of_doctors' ),
-    path('doctors/create', view=views.create_doctor, name='create_doctor' ),
-    path('doctors/edit/<id>', view=views.edit_doctor, name='edit_doctor' ),
-    path('doctors/edit/<id>', view=views.delete_doctor, name='delete_doctor' ),
+    path('doctors/create/', view=views.create_doctor, name='create_doctor' ),
+    path('doctors/edit/<id>/', view=views.edit_doctor, name='edit_doctor' ),
+    path('doctors/edit/<id>/', view=views.delete_doctor, name='delete_doctor' ),
 ]
