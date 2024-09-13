@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('your-background-image.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, 0.5); /* Darken the background for better readability */
+        }
+
+        .navbar {
+            background-color: #0d6efd; /* Ensure navbar color stands out */
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            transition: color 0.3s;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #ffc107 !important; /* Hover effect changing color to yellow */
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-success {
+            background-color: #198754;
+            border-color: #198754;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #0d6efd, #6610f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/patients/">Clinical App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/patients/">Patient List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/patient/create/">New Patient</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Create Patient Form -->
+    <div class="container">
+        <h3>Create Patient</h3>
+        <form method="POST" onsubmit="return checkPatientForm();">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="name">Patient Name:</label>
+                <input type="text" id="name" autofocus required
+                    class="form-control" name="name" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="disease">Their Disease:</label>
+                <input type="text" id="disease" required
+                    class="form-control" name="disease" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="age">Their Age:</label>
+                <input type="number" id="age" required
+                    min="0" class="form-control" name="age" />
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Create Patient</button>
+                <button type="reset" class="btn btn-light">Clear Form</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function checkPatientForm() {
+            return confirm("Are you sure you want to create this patient?");
+        }
+    </script>
+
+</body>
+
+</html>

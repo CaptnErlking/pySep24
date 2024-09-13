@@ -26,30 +26,41 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav>   
     <h3>Create Doctor</h3>
     <div class="container">
-        <form>
+        <form method="POST" onsubmit="return checkDoctorForm();">
+            {% csrf_token %}
             <div class="form-group">
                 <label for="name">Doctor Name:</label>
                 <input type="text" id="name" autofocus required
-                    class="form-control"/>
+                    class="form-control" name="name"/>
             </div>
             <div  class="form-group">
-                <label for="specilization">Specilization:</label>
-                <input type="text" id="specilization"  required
-                class="form-control"/>
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization"  required
+                class="form-control" name="specialization"/>
             </div>
             <div class="form-group">
                 <label for="year_of_experience">Year of Experience:</label>
                 <input type="number" id="year_of_experience"  required
-                    min="0" max="40" class="form-control"/>
+                    min="0" max="40" class="form-control"  name="year_of_experience"/>
             </div>
-            <button type="submit" class="btn btn-danger">Create Doctor</button>
+            <button type="submit" class="btn btn-success">Create Doctor</button>
             <button type="reset" class="btn btn-light">Clear Form</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function checkDoctorForm()
+      {
+        if(!confirm("Are you sure to create doctor?"))
+        {
+          return false;     
+        }
 
+        return true;
+      }
+    </script>
 </body>
 </html>
