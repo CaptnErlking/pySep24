@@ -79,7 +79,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'emr_project_db',  # Your MySQL database name
             'USER': 'root',
-            'PASSWORD': 'root123',
+            'PASSWORD': '1234',
             'HOST': 'localhost',
             'PORT': '3306',
         }
