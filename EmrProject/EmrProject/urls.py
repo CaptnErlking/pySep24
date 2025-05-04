@@ -19,9 +19,9 @@ from django.urls import path
 from PatientApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', view=views.list_of_patients, name='home'),
-    path('patients/', view=views.list_of_patients, name='list_of_patients'),
+    path('', view=views.list_patients, name='home'),
+    path('patients/', view=views.list_patients, name='list_patients'),
     path('patients/create/', view=views.create_patient, name='create_patients'),
-    path('patients/edit/<id>/', view=views.edit_patient, name='edit_patient'),
-    path('patients/delete/<id>/', view=views.delete_patient, name='delete_patient'),
+    path('patients/edit/<pk>/', view=views.edit_patient, name='edit_patient'),
+    path('patients/delete/<pk>/', views.delete_patient, name='delete_patient'),
 ]

@@ -36,6 +36,14 @@
             color: #ffc107 !important; /* Hover effect changes to a yellow color */
         }
 
+        .table th, .table td {
+            border-right: 1px solid #dee2e6; /* Light gray line */
+        }
+
+        /* Remove the last column's right border for a clean edge */
+        .table th:last-child, .table td:last-child {
+            border-right: none;
+        }
         .table {
             border-radius: 10px; /* Curved ends of the table */
             overflow: hidden; /* Ensure rounded corners are applied */
@@ -126,32 +134,45 @@
     <!-- Patient List -->
     <div class="container mt-5">
         <h3 class="mb-4">Patient List</h3>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Disease</th>
-                    <th>Age</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for patient in patients %}
-                <tr>
-                    <td>{{ patient.id }}</td>
-                    <td>{{ patient.name }}</td>
-                    <td>{{ patient.disease }}</td>
-                    <td>{{ patient.age }}</td>
-                    <td>
-                        <a href="/patients/edit/{{patient.id}}" class="btn btn-outline-primary btn-sm btn-custom">Edit</a>
-                        <button class="btn btn-outline-danger btn-sm" onclick="openDeleteModal('{{ patient.id }}')">Delete</button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Patient Id</th>
+                        <th>Name</th>
+                        <th>Disease</th>
+                        <th>Age</th>
+                        <th>Mobile</th>
+                        <th>Accompanying Person</th>
+                        <th>Relation</th>
+                        <th>Contact</th>
+                        <th>Doctor</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient.custom_id }}</td>
+                        <td>{{ patient.name }}</td>
+                        <td>{{ patient.disease }}</td>
+                        <td>{{ patient.age }}</td>
+                        <td>{{ patient.mobile_number }}</td>
+                        <td>{{ patient.accompanying_person_name }}</td>
+                        <td>{{ patient.accompanying_person_relation }}</td>
+                        <td>{{ patient.accompanying_person_contact }}</td>
+                        <td>{{ patient.doctor_name }}</td>
+                        <td>
+                            <a href="/patients/edit/{{ patient.id }}" class="btn btn-outline-primary btn-sm btn-custom">Edit</a>
+                            <button class="btn btn-outline-danger btn-sm" onclick="openDeleteModal('{{ patient.id }}')">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
+
 
     <!-- Delete Confirmation Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
